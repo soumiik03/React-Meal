@@ -66,13 +66,13 @@ export default function Home() {
             <div className="meals-count">Showing {filteredMeals.length} meals</div>
           )}
           {meals.length === 0 ? (
-            <div className="no-meals-state" id="empty-meals-state">
+            <div className="no-meals-state" id="empty-meals-state" role="status">
               <span className="empty-icon" role="img" aria-label="plate and utensils">🍽️</span>
               <h3>No meals available</h3>
               <p>Please check back later.</p>
             </div>
           ) : filteredMeals.length === 0 ? (
-            <div className="no-meals-state" id="empty-search-state">
+            <div className="no-meals-state" id="empty-search-state" role="status">
               <span className="empty-icon" role="img" aria-label="magnifying glass">🔍</span>
               <h3>No matches found</h3>
               <p>We couldn't find any meals matching "{searchQuery}".</p>
