@@ -62,6 +62,9 @@ export default function Home() {
       {!loading && !error && (
         <>
           <SearchInput value={searchQuery} onChange={setSearchQuery} />
+          {meals.length > 0 && (
+            <div className="meals-count">Showing {filteredMeals.length} meals</div>
+          )}
           {meals.length === 0 ? (
             <div className="no-meals-state" id="empty-meals-state">
               <span className="empty-icon" role="img" aria-label="plate and utensils">🍽️</span>

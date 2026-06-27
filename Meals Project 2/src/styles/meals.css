@@ -230,4 +230,9 @@
   transform: scale(0.98);
 }
 
-
+.meals-count {
+  font-size: 1.1rem;
+  color: #aaa;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
