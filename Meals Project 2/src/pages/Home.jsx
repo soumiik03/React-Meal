@@ -49,7 +49,7 @@ export default function Home() {
   }, [])
 
   const filteredMeals = meals.filter((meal) =>
-    meal.title.includes(searchQuery)
+    meal.title.toLowerCase().includes(searchQuery.trim().toLowerCase())
   )
 
   return (
