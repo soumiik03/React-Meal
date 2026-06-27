@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Header from '../components/Header'
 import MealCard from '../components/MealCard'
 import LoadingSpinner from '../components/LoadingSpinner'
 import ErrorMessage from '../components/ErrorMessage'
+import SearchInput from '../components/SearchInput'
+import { filterMeals } from '../utils/search'
 import '../styles/meals.css'
 
 export default function Home() {
@@ -48,10 +50,9 @@ export default function Home() {
     fetchMeals()
   }, [])
 
-  const trimmedQuery = searchQuery.trim().toLowerCase()
-  const filteredMeals = meals.filter((meal) =>
-    meal.title.toLowerCase().includes(trimmedQuery)
-  )
+  const filteredMeals = useMemo(() => {
+    return filterMeals(meals, searchQuery)
+  }, [meals, searchQuery])
 
   return (
     <div className="container">
@@ -60,16 +61,26 @@ export default function Home() {
       {error && <ErrorMessage message={error} />}
       {!loading && !error && (
         <>
-          <div className="search-container">
-            <input
-              type="text"
-              placeholder="Search meals..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-          {filteredMeals.length === 0 ? (
-            <div className="no-meals">No meals found</div>
+          <SearchInput value={searchQuery} onChange={setSearchQuery} />
+          {meals.length === 0 ? (
+            <div className="no-meals-state" id="empty-meals-state">
+              <span className="empty-icon" role="img" aria-label="plate and utensils">🍽️</span>
+              <h3>No meals available</h3>
+              <p>Please check back later.</p>
+            </div>
+          ) : filteredMeals.length === 0 ? (
+            <div className="no-meals-state" id="empty-search-state">
+              <span className="empty-icon" role="img" aria-label="magnifying glass">🔍</span>
+              <h3>No matches found</h3>
+              <p>We couldn't find any meals matching "{searchQuery}".</p>
+              <button
+                type="button"
+                className="clear-search-btn"
+                onClick={() => setSearchQuery('')}
+              >
+                Clear Search
+              </button>
+            </div>
           ) : (
             <div className="meals-grid">
               {filteredMeals.map((meal) => (
@@ -82,4 +93,5 @@ export default function Home() {
     </div>
   )
 }
+
 
