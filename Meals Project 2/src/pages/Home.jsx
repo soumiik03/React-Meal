@@ -9,6 +9,7 @@ export default function Home() {
   const [meals, setMeals] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     const fetchMeals = async () => {
@@ -39,7 +40,7 @@ export default function Home() {
 
         setMeals(processedMeals)
         setLoading(false)
-      } catch (err) {
+      } catch {
         setError('Failed to load meals')
         setLoading(false)
       }
@@ -47,16 +48,37 @@ export default function Home() {
     fetchMeals()
   }, [])
 
+  const filteredMeals = meals.filter((meal) =>
+    meal.title.includes(searchQuery)
+  )
+
   return (
     <div className="container">
       <Header />
       {loading && <LoadingSpinner />}
       {error && <ErrorMessage message={error} />}
-      <div className="meals-grid">
-        {meals.map((meal) => (
-          <MealCard key={meal.id} meal={meal} />
-        ))}
-      </div>
+      {!loading && !error && (
+        <>
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Search meals..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          {filteredMeals.length === 0 ? (
+            <div className="no-meals">No meals found</div>
+          ) : (
+            <div className="meals-grid">
+              {filteredMeals.map((meal) => (
+                <MealCard key={meal.id} meal={meal} />
+              ))}
+            </div>
+          )}
+        </>
+      )}
     </div>
   )
 }
+
