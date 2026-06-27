@@ -48,8 +48,9 @@ export default function Home() {
     fetchMeals()
   }, [])
 
+  const trimmedQuery = searchQuery.trim().toLowerCase()
   const filteredMeals = meals.filter((meal) =>
-    meal.title.toLowerCase().includes(searchQuery.trim().toLowerCase())
+    meal.title.toLowerCase().includes(trimmedQuery)
   )
 
   return (
