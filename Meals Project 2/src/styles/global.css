@@ -40,8 +40,8 @@ body {
 
 body {
   font-family: var(--font-family);
-  background-color: black !important;
-  background: black !important;
+  background-color: black;
+  background: black;
   color: var(--text-primary);
   min-height: 100vh;
   padding: 0;
