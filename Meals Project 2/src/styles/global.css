@@ -40,14 +40,25 @@ body {
 
 body {
   font-family: var(--font-family);
-  background-color: #000000;
-  background: #000000;
+  background-color: black;
+  background: black;
   color: var(--text-primary);
   min-height: 100vh;
   padding: 0;
   overflow-x: hidden;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+.navbar {
+  background-color: white;
+  color: black;
+}
+
+.navbar a,
+.navbar-logo,
+.navbar-link {
+  color: black;
 }
 
 .container {
