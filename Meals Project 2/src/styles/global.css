@@ -1,7 +1,7 @@
 :root {
   /* Color Palette (WCAG AA compliant contrast) */
-  --bg-gradient: radial-gradient(circle at top, #1a162b 0%, #07060c 100%);
-  --bg-color: #07060c;
+  --bg-gradient: none;
+  --bg-color: #000000;
   --text-primary: #f3f4f6;   /* Off-white: >16:1 contrast ratio against card backgrounds */
   --text-secondary: #d1d5db; /* Light gray: >10:1 contrast ratio against card backgrounds */
   --text-muted: #9ca3af;     /* Medium-light gray: >6:1 contrast ratio against card backgrounds */
