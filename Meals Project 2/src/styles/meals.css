@@ -12,10 +12,6 @@
   transition: var(--transition-smooth);
 }
 
-.navbar a {
-  color: #000000;
-}
-
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -36,7 +32,10 @@
   letter-spacing: -0.5px;
 }
 
-.navbar-link {
+.navbar-menu,
+.navbar-link,
+.navbar-logo,
+.navbar a {
   color: #000000;
 }
 
