@@ -10,8 +10,8 @@ body {
   top: 0;
   z-index: 100;
   width: 100%;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: white !important;
+  color: black !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   transition: var(--transition-smooth);
 }
@@ -30,7 +30,7 @@ body {
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: #000000;
+  color: black;
   font-weight: 700;
   font-size: 1.3rem;
   letter-spacing: -0.5px;
@@ -40,7 +40,7 @@ body {
 .navbar-link,
 .navbar-logo,
 .navbar a {
-  color: #000000;
+  color: black !important;
 }
 
 .logo-emoji {
@@ -57,7 +57,7 @@ body {
 
 .navbar-link {
   text-decoration: none;
-  color: #111111;
+  color: black;
   font-size: 0.95rem;
   font-weight: 500;
   transition: var(--transition-smooth);
@@ -76,7 +76,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #111111;
+  background-color: black;
   transition: var(--transition-smooth);
 }
 
