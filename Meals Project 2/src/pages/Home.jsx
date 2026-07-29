@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
+import Navbar from '../components/Navbar'
 import Header from '../components/Header'
 import MealCard from '../components/MealCard'
 import LoadingSpinner from '../components/LoadingSpinner'
@@ -55,13 +56,15 @@ export default function Home() {
   }, [meals, searchQuery])
 
   return (
-    <div className="container">
-      <Header />
-      {loading && <LoadingSpinner />}
-      {error && <ErrorMessage message={error} />}
-      {!loading && !error && (
-        <>
-          <SearchInput value={searchQuery} onChange={setSearchQuery} />
+    <>
+      <Navbar />
+      <div className="container">
+        <Header />
+        {loading && <LoadingSpinner />}
+        {error && <ErrorMessage message={error} />}
+        {!loading && !error && (
+          <>
+            <SearchInput value={searchQuery} onChange={setSearchQuery} />
           {meals.length > 0 && (
             <div className="meals-count">Showing {filteredMeals.length} meals</div>
           )}
@@ -94,6 +97,7 @@ export default function Home() {
         </>
       )}
     </div>
+  </>
   )
 }
 
